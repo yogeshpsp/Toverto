@@ -1,0 +1,131 @@
+
+<nb-layout class="backy">
+    <nb-sidebar style="background-color: #0d6efd;">
+      <div>
+        <img src="https://tse1.mm.bing.net/th?id=OIP.iH0tsWJVhGqHeAs4pO4_-AAAAA&pid=Api&P=0&w=300&h=300">
+        <nb-layout-column class="sidebar-buttons">
+            <div class="btn-spacing">
+            <button class="btn btn-light"><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</button>
+        </div>
+        <div class="btn-spacing">
+            <button class="btn btn-light"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Employees</button>
+        </div>
+        <div class="btn-spacing">
+            <button class="btn btn-light"><i class="fa fa-users fa-lg" aria-hidden="true"></i> Vendors</button>
+        </div>
+        <div class="btn-spacing">
+            <button class="btn btn-light"><i class="fa fa-cog fa-lg" aria-hidden="true"></i> Settings</button>
+        </div>
+        <div style="padding-right:30px">
+        <button class=" btn btn-light fixedbutton"><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i> Logout</button>
+    </div>
+        </nb-layout-column>
+      </div>
+    </nb-sidebar>
+    <!-- Navigation-->
+    <nb-layout-column class="navigation">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+              <nb-form-field>
+                <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+                <input type="text" nbInput placeholder="Search Vendors">
+              </nb-form-field>
+              <div class="row tohide">
+                <div class="col">
+                      <nb-select placeholder="Organization ABC" [(selected)]="selectedItem">
+                        <nb-option value="">Option empty</nb-option>
+                      </nb-select>
+                  </div>
+                  <div class="col logo tohide">
+                    <nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon>
+                  </div>
+                </div>
+                </div>
+          </nav>
+          <!--Vendor addition-->
+            <nav class="navbar navbar-light">
+                <div class="container-fluid col">
+                  <nb-select class="tohide" placeholder="Active Vendors" [(selected)]="selectedItem">
+                    <nb-option value="">Option empty</nb-option>
+                  </nb-select>
+                  <div class="row">
+                    <div class="col">
+                          <button nbButton (click)="addVendor()">Add Vendors</button>
+                      </div>
+                      <div class="col tohide">
+                        <button nbButton><nb-icon nbPrefix icon="more-horizontal-outline" pack="eva"></nb-icon></button>
+                      </div>
+                    </div>
+                    </div>
+              </nav>
+             
+              <!--Registration Form-->
+              <form *ngIf="hide" #list="ngForm" (ngSubmit)="onSubmit(list.value)">
+                <div class="form-group">
+                  <label for="vendorname"  >VendorName</label>
+                  <input type="text" id="VendorName" class="form-control" name="name"  ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <input type="text" id="type" class="form-control" name="type" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" class="form-control" name="email" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="website">Website URL</label>
+                  <input type="text" id="website" class="form-control" name="website" ngModel>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+              <!--Update Form-->
+              <form *ngIf="hideupdateform" #listupdate="ngForm" (ngSubmit)="putUpdate(listupdate.value)">
+                <div class="form-group">
+                  <label for="vendorname"  >VendorName</label>
+                  <input type="text" id="VendorName" class="form-control" name="name"  [(ngModel)]="update.name">
+                </div>
+                <div class="form-group">
+                  <label for="type">Type</label>
+                  <input type="text" id="type" class="form-control" name="type" [(ngModel)]="update.type">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" class="form-control" name="email"[(ngModel)]="update.email">
+                </div>
+                <div class="form-group">
+                  <label for="website">Website URL</label>
+                  <input type="text" id="website" class="form-control" name="website" [(ngModel)]="update.website"  >
+                </div>
+                <button type="submit" class="btn btn-primary">Update</button>
+              </form>
+              <!--Form Groups-->
+   
+              <hr>             
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Vendor Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Contact Email</th>
+      <th scope="col">Website URL</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <th scope="row"><nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon></th>
+      <td>{{user.name}}</td>
+      <td>{{user.type}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.website}}</td>
+      <button class="btn actionbtn" style="color: blue;" (click)="deleteUser(user.id)">Delete</button>
+        <button class="btn actionbtn" style="color: blue;" (click)="updateUser(user)">Update </button>
+       
+    </tr>
+  
+  </tbody>
+</table>
+    </nb-layout-column>
+</nb-layout>

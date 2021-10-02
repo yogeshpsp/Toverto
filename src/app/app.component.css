@@ -1,0 +1,70 @@
+img {
+    width: 190px;
+    height: 100px;
+    padding-bottom: 25px;
+}
+nb-sidebar.expanded{
+    width:15rem !important;
+}
+
+.btn{
+    width: 200px !important;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.btn-light{
+    color: #0d6efd !important;
+}
+.fa{
+    padding-right: 7px;
+}
+.btn-spacing{
+    padding-bottom: 10px;
+}
+
+.nb-transition{
+    background-color: #C8C6C6 !important;
+    border-radius: 6px !important;
+}
+.bg-light{
+    background-color: #D3E0EA !important;
+}
+.fixedbutton{
+    margin: auto;
+    display: block;
+    width: 130px !important; 
+    margin-top: 100px;
+}
+.navigation{
+    padding:0px !important;
+}
+.col{
+    padding-left: 0px !important;
+}
+.logo{
+    padding-top: 4px !important;
+}
+.col .nb-transition {
+    background-color: transparent !important;
+}
+.nb-theme-default nb-select.appearance-outline.status-basic .select-button.bottom  {
+    background-color: transparent !important;
+    color: red !important;
+}
+.actionbtn{
+    background-color: transparent !important;
+    padding: 0px !important;
+    width:50px !important;
+}
+@media (min-width: 320px) and (max-width: 425px) { 
+.tohide{
+    visibility: hidden;
+}
+.col{
+    margin-left: 15px;
+}
+.btn{
+    width: 150px !important;
+}
+}
